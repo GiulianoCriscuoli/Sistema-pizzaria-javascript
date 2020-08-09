@@ -121,7 +121,7 @@ h1 {
     margin-top:10px;
 }
 
-.pizzaWindowArea {
+.pizza--modal-area {
     position:fixed;
     left:0;
     top:0;
@@ -134,13 +134,13 @@ h1 {
     align-items: center;
     overflow-y:auto;
 }
-.pizzaWindowBody {
+.pizza--modal-body {
     width:900px;
     background-color:#FFF;
     border-radius:10px;
     box-shadow:0px 0px 15px #999;
     display:flex;
-    margin:20px 0px;
+    margin: 50px auto;
 }
 .pizzaBig {
     flex:1;
@@ -148,7 +148,7 @@ h1 {
     justify-content: center;
     align-items: center;
 }
-.pizzaBig--back {
+.pizzaBig-back {
     position:absolute;
     width:30px;
     height:30px;
@@ -166,25 +166,25 @@ h1 {
 .pizzaInfo h1 {
     margin-top:50px;
 }
-.pizzaInfo .pizzaInfo--desc {
+.pizzaInfo .pizzaInfo-desc {
     font-size:15px;
     color:#999;
     margin-top:10px;
     font-family:'Lato',Helvetica,Arial;
 }
-.pizzaInfo--sector {
+.pizzaInfo-sector {
     color:#CCC;
     text-transform: uppercase;
     font-size:14px;
     margin-top:30px;
     margin-bottom:10px;
 }
-.pizzaInfo--sizes {
+.pizzaInfo-sizes {
     display:inline-flex;
     border-radius:10px;
     overflow:hidden;
 }
-.pizzaInfo--size {
+.pizzaInfo-size {
     padding:10px 15px;
     color:#000;
     background-color:#EEE;
@@ -192,36 +192,36 @@ h1 {
     font-weight: bold;
     cursor:pointer;
 }
-.pizzaInfo--size:hover {
+.pizzaInfo-size:hover {
     background-color:#CCC;
 }
-.pizzaInfo--size.selected {
+.pizzaInfo-size.selected {
     background-color:#399ade;
     color:#FFF;
 }
-.pizzaInfo--size.selected span {
+.pizzaInfo-size.selected span {
     color:#D6D6D6;
 }
-.pizzaInfo--size span {
+.pizzaInfo-size span {
     font-size:12px;
     color:#999;
     font-weight: normal;
 }
-.pizzaInfo--price {
+.pizzaInfo-price {
     display:flex;
     align-items:center;
 }
-.pizzaInfo--actualPrice {
+.pizzaInfo-actualPrice {
     font-size:28px;
     margin-right:30px;
 }
-.pizzaInfo--qtarea {
+.pizzaInfo-qtarea {
     display:inline-flex;
     background-color:#EEE;
     border-radius:10px;
     height:30px;
 }
-.pizzaInfo--qtarea button {
+.pizzaInfo-qtarea button {
     border:0;
     background-color:transparent;
     font-size:17px;
@@ -230,14 +230,14 @@ h1 {
     padding:0px 10px;
     color:#333;
 }
-.pizzaInfo--qt {
+.pizzaInfo-qt {
     line-height: 30px;
     font-size: 12px;
     font-weight: bold;
     padding: 0px 5px;
     color:#000;
 }
-.pizzaInfo--addButton {
+.pizzaInfo-addButton {
     margin-top:30px;
     padding:20px 30px;
     border-radius:20px;
@@ -247,14 +247,14 @@ h1 {
     cursor:pointer;
     margin-right:30px;
 }
-.pizzaInfo--addButton:hover {
+.pizzaInfo-addButton:hover {
     background-color:#32a345;
 }
-.pizzaInfo--cancelButton {
+.pizzaInfo-cancelButton {
     display:inline-block;
     cursor:pointer;
 }
-.pizzaInfo--cancelMobileButton {
+.pizzaInfo--cancelButton-mobile {
     display:none;
     height:40px;
     text-align:center;
@@ -373,12 +373,12 @@ h1 {
         display:block;
     }
 
-    .pizzaWindowArea {
+    .pizza--modal-area {
         justify-content:flex-start;
         align-items: flex-start;
     }
 
-    .pizzaWindowBody {
+    .pizza--modal-body {
         width:100vw;
         display:block;
         padding:20px;
@@ -396,28 +396,28 @@ h1 {
         margin-top:20px;
     }
 
-    .pizzaInfo--qtarea {
+    .pizzaInfo-qtarea {
         height:60px;
     }
-    .pizzaInfo--qtarea button {
+    .pizzaInfo-qtarea button {
         font-size:25px;
         padding:0px 25px;
     }
-    .pizzaInfo--qt {
+    .pizzaInfo-qt {
         line-height: 60px;
         font-size:20px;
     }
-    .pizzaInfo--addButton {
+    .pizzaInfo-addButton {
         font-size:20px;
         display:block;
         text-align:center;
         margin:30px auto;
     }
 
-    .pizzaInfo--cancelButton {
+    .pizzaInfo-cancelButton {
         display:none;
     }
-    .pizzaInfo--cancelMobileButton {
+    .pizzaInfo--cancelButton-mobile{
         display:block;
     }
 }

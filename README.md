@@ -1,4 +1,4 @@
-# Projeto: Sistema de pizzarias
+# Projeto: Sistema de pizzaria
 
  ![](gifs/.gif)
 

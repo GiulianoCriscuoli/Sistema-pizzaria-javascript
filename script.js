@@ -12,22 +12,45 @@ let pizzas = [
 const c =  el => document.querySelector(el);
 
 
-// Exercício 1:
-// mapear o pizzaJson e clonar as 7 pizzas do pizzaJson
-// exercício 2, mapear, colocar a sinformações da pizza e adicionar
+// Exercício 1: mapear o pizzaJson e clonar as 7 pizzas do pizzaJson
+// exercício 2: mapear, colocar a sinformações da pizza e adicionar
+// exercício 3: tirar o evento de atualizar na tag a, o add.EventListener
+//exercício 4: Abrir o modal
 
 pizzas.map((pizza, index) => {
 
     // pizza item é o objeto clonado
 
     let pizzaItem = c(".models .pizza-item").cloneNode(true);
+    let modal = c(".pizza--modal-area");
+
+    // Pegando as informações do array de pizza e preenchendo os objetos
 
     pizzaItem.querySelector(".pizza-img img").src = pizza.img;
     pizzaItem.querySelector(".pizza-price").innerHTML = `R$${pizza.price.toFixed(2)}`;
     pizzaItem.querySelector(".pizza-name").innerHTML = pizza.name;
     pizzaItem.querySelector(".pizza-desc").innerHTML = pizza.description;
 
+    // Tirando  o evento default dos links das pizzas
+
+    pizzaItem.querySelector("a").addEventListener("click", e => {
+        
+        e.preventDefault();
+
+        // abrindo modal
+
+        modal.style.display = "block";
+    
+    
+     });
+
+    // adicionando o clone da pizza 
+
     c(".pizza-area").append(pizzaItem);
+
+   
+
+
 
 });
 
