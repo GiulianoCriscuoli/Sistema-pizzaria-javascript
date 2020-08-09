@@ -8,8 +8,9 @@ let pizzas = [
     {id:7, name:'Chocolate', img:'images/pizza7.png', price:22.36, sizes:['320g', '530g', '860g'], description:'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'}
 ];
 
-
+let modalQtPizzas = 1;
 const c =  el => document.querySelector(el);
+const cAll = el => document.querySelectorAll(el);
 
 
 // Exercício 1: mapear o pizzaJson e clonar as 7 pizzas do pizzaJson
@@ -17,6 +18,8 @@ const c =  el => document.querySelector(el);
 // exercício 3: tirar o evento de atualizar na tag a, o add.EventListener
 // exercício 4: Abrir o modal
 // exercício 5: Fazer a key de cada modal conforme a pizza clicada e por as informações da pizza no modal
+// exercício 6: pegar os tamanhos das pizzas
+// exercício 7: mostrar sempre o tamanho grande selecionado
 
 pizzas.map((pizza, index) => {
 
@@ -45,12 +48,41 @@ pizzas.map((pizza, index) => {
         
         e.preventDefault();
 
+        // a key aponta para pizza-item e recebe o attribute dele que foi settado
+
         let key = e.target.closest(".pizza-item").getAttribute("data-key");
+        let sizeValue = cAll(".pizzaInfo-size");
+        modalQtPizzas = 1;
+
+        // preenchendo as informações do modal de acordo com a sua key
+
         c(".pizzaBig img").src = pizzas[key].img;
         c(".pizzaInfo h1").innerHTML = pizzas[key].name;
         c(".pizzaInfo .pizzaInfo-desc").innerHTML = pizzas[key].description;
+        c(".pizzaInfo-actualPrice").innerHTML = `R$ ${pizzas[key].price.toFixed(2)}`
+
+        // Remove a classe que possui selected
+
+        c(".pizzaInfo-size.selected").classList.remove("selected");
+
+        // Adiciona se o tamanho for grande.
+
+        
+        sizeValue.forEach((size, sizeIndex) => {
+
+            size.querySelector('span').innerHTML = pizzas[key].sizes[sizeIndex];
+
+            if(sizeIndex === 2) {
+
+                size.classList.add("selected");
+            }
+
+        });
+
+        c(".pizzaInfo-qt").innerHTML = modalQtPizzas;
 
         // abrindo modal
+
         modal.style.opacity = 0;
         modal.style.display = "flex";
 
