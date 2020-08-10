@@ -162,15 +162,31 @@ c(".pizzaInfo-addButton").addEventListener("click", () => {
 
     let size = parseInt(c(".pizzaInfo-size.selected").getAttribute("data-key"));
 
-    // adicionando ao carrinho
+    // criar o identificador
 
+    let identifier = pizzas[modalKey].id + "@" + size;
+
+    // cria uma variável com o array dos identifiers iguais
+    // com o findIndex vai procurar pelo identificador igualado
+
+    let keyCart = cart.findIndex(item => item.identifier === identifier);
+
+    // verifica se tem o item na keyCart
+
+    if(keyCart > -1) {
+
+        cart[keyCart].qt += modalQtPizzas;
+    } else {
+  
     cart.push({
-
+        identifier,
         id: pizzas[modalKey].id,
         size,
         qt: modalQtPizzas
 
     });
+
+    }
 
     closeModal();
 
