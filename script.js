@@ -12,21 +12,12 @@ let modalQtPizzas = 1;
 const c =  el => document.querySelector(el);
 const cAll = el => document.querySelectorAll(el);
 
-
-// Exercício 1: mapear o pizzaJson e clonar as 7 pizzas do pizzaJson
-// exercício 2: mapear, colocar a sinformações da pizza e adicionar
-// exercício 3: tirar o evento de atualizar na tag a, o add.EventListener
-// exercício 4: Abrir o modal
-// exercício 5: Fazer a key de cada modal conforme a pizza clicada e por as informações da pizza no modal
-// exercício 6: pegar os tamanhos das pizzas
-// exercício 7: mostrar sempre o tamanho grande selecionado
-
 pizzas.map((pizza, index) => {
 
     // pizza item é o objeto clonado
 
     let pizzaItem = c(".models .pizza-item").cloneNode(true);
-    let modal = c(".pizza--modal-area");
+    const modal = c(".pizza--modal-area");
     let timer = 300;
 
     // Pegando as informações do array de pizza e preenchendo os objetos
@@ -95,14 +86,31 @@ pizzas.map((pizza, index) => {
     
      });
 
-  
-
-   
-
-
-
 });
 
-    
+// eventos do modal
 
+// Fechando o modal
 
+function closeModal() {
+
+    const modal = c(".pizza--modal-area");
+    let timerCloser = 500;
+
+    modal.style.opacity = 0;
+
+    setTimeout(() => {
+        
+    modal.style.display = "none";
+
+    }, timerCloser);
+  
+}
+
+// Pegar os dois botões que fecham e dar um foreach para fechá-los
+
+cAll(".pizzaInfo-cancelButton, .pizzaInfo--cancelButton-mobile").forEach(close => {
+
+    close.addEventListener("click", closeModal);
+
+});
