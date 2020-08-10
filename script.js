@@ -70,9 +70,8 @@ pizzas.map((pizza, index) => {
 
         });
 
-        c(".pizzaInfo-qt").innerHTML = modalQtPizzas;
-
         // abrindo modal
+        c(".pizzaInfo-qt").innerHTML = modalQtPizzas;
 
         modal.style.opacity = 0;
         modal.style.display = "flex";
@@ -82,7 +81,6 @@ pizzas.map((pizza, index) => {
             modal.style.opacity = 1;
 
         }, timer)
-    
     
      });
 
@@ -112,5 +110,41 @@ function closeModal() {
 cAll(".pizzaInfo-cancelButton, .pizzaInfo--cancelButton-mobile").forEach(close => {
 
     close.addEventListener("click", closeModal);
+
+});
+
+// aumentando e diminuindo a quantidade de pizzas
+
+c(".pizzaInfo-qtmenos").addEventListener("click", () => {
+
+    if(modalQtPizzas > 1) {
+       
+        modalQtPizzas--;
+
+        c(".pizzaInfo-qt").innerHTML = modalQtPizzas;
+
+
+    }    
+
+});
+
+c(".pizzaInfo-qtmais").addEventListener("click", () => {
+
+        modalQtPizzas++;
+
+        c(".pizzaInfo-qt").innerHTML = modalQtPizzas;
+
+});
+
+// selecionando os tamanhos
+
+cAll(".pizzaInfo-size").forEach((size) => {
+
+    size.addEventListener("click", (e) => {
+
+        c(".pizzaInfo-size.selected").classList.remove("selected");
+        size.classList.add("selected");
+
+    });
 
 });
