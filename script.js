@@ -9,6 +9,8 @@ let pizzas = [
 ];
 
 let modalQtPizzas = 1;
+let cart = [];
+let modalKey = 0;
 const c =  el => document.querySelector(el);
 const cAll = el => document.querySelectorAll(el);
 
@@ -44,6 +46,7 @@ pizzas.map((pizza, index) => {
         let key = e.target.closest(".pizza-item").getAttribute("data-key");
         let sizeValue = cAll(".pizzaInfo-size");
         modalQtPizzas = 1;
+        modalKey = key;
 
         // preenchendo as informações do modal de acordo com a sua key
 
@@ -123,7 +126,6 @@ c(".pizzaInfo-qtmenos").addEventListener("click", () => {
 
         c(".pizzaInfo-qt").innerHTML = modalQtPizzas;
 
-
     }    
 
 });
@@ -146,5 +148,30 @@ cAll(".pizzaInfo-size").forEach((size) => {
         size.classList.add("selected");
 
     });
+
+});
+
+c(".pizzaInfo-addButton").addEventListener("click", () => {
+
+    // 3 informações são necessárias aqui: 
+    // qual pizza? Está armazenada em modalKey, que possui a key do modal selecionado
+    // tamanho da pizza? O tamanho da pizza é a que está com a classe selected, então pegamos a sua data-ley
+    // quantas pizzas? Essa informação está em modalQtPizzas
+
+    // daata-key do tamanho da pizza
+
+    let size = parseInt(c(".pizzaInfo-size.selected").getAttribute("data-key"));
+
+    // adicionando ao carrinho
+
+    cart.push({
+
+        id: pizzas[modalKey].id,
+        size,
+        qt: modalQtPizzas
+
+    });
+
+    closeModal();
 
 });
