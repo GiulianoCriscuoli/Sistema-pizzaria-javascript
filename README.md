@@ -1,10 +1,17 @@
 # Projeto: Sistema de pizzaria
 
- ![](gifs/.gif)
+
+ ![](gifs/pizza1.png)
+
+ ## Versão mobile
+ 
+
+ ![](gifs/pizzamobile.gif)
+
 
 # Descrição
 
-Sistema de pizzaria, feito com CSS e Javascript, projeto de front end, para fixar conhecimentos de manipulação do DOM.
+Sistema de pizzaria, responsivo, feito com CSS e Javascript. Projeto de front end, para fixar conhecimentos de manipulação do DOM.
 
 
 # Tecnologias Utilizadas

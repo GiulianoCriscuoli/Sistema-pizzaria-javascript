@@ -192,9 +192,33 @@ c(".pizzaInfo-addButton").addEventListener("click", () => {
 
 });
 
+// usando o menu do carrinho mobile para mostrar o carrinho
+
+c(".menu-openner").addEventListener("click", () => {
+
+    if(cart.length > 0) {
+
+        c("aside").style.left = "0";
+
+    }
+
+});
+
+// fechando o carrinho
+
+c(".menu-closer").addEventListener("click", () => {
+
+    c("aside").style.left = "100vw";
+
+});
+
 //atualizando o carrinho após adicionar e fechar o modal
 
 function updateCart() {
+
+    // adicionando a quantidade no carrinho mobile
+
+    c(".menu-openner span").innerHTML = cart.length;
 
     // se o item existir, ele vai mostrar o painel do carrinho
 
@@ -278,6 +302,7 @@ function updateCart() {
     } else {
 
         c("aside").classList.remove("show");
+        c("aside").style.left = '100vw';
 
     }
 
