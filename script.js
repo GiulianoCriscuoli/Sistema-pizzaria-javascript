@@ -202,17 +202,27 @@ function updateCart() {
 
         c("aside").classList.add("show");
         c(".cart").innerHTML = "";
+
+        let subtotal = 0;
+        let off = 0;
+        let total = 0;
+
         // for para procurar em cada item array do carrinho 
 
         for( let i in cart) {
+
+            
 
             // selectedPizza recebe pelo find todas as propriedades da pizza onde
             // o id da busca for igual ao id do item selecionado e  do carrinho da interação 
 
             let selectedPizza = pizzas.find(item => item.id === cart[i].id);
 
-            let cartItem = c(".models .cart-item").cloneNode(true);
+            // Fazer o cáculo do subtotal = é ele + (preço das pizzas * quantidade)
 
+            subtotal += selectedPizza.price * cart[i].qt;
+
+            let cartItem = c(".models .cart-item").cloneNode(true);
             let pizzaSizeName;
 
             switch(cart[i].size) {
@@ -235,9 +245,35 @@ function updateCart() {
             cartItem.querySelector("img").src = selectedPizza.img;
             cartItem.querySelector(".cart--item-name").innerHTML = pizzaName;
             cartItem.querySelector(".cart--item-qt").innerHTML = cart[i].qt;
+            cartItem.querySelector(".cart--item-qtmenos").addEventListener("click", () => {
+                
+                if(cart[i].qt > 1) {
+                    cart[i].qt--;
+
+                } else {
+                    cart.splice(i, 1);
+                    
+                }
+
+                updateCart();
+
+            });
+
+            cartItem.querySelector(".cart--item-qtmais").addEventListener("click", () => {
+                cart[i].qt++;
+                updateCart();
+
+            });
 
             c(".cart").append(cartItem);
         }
+
+        off = subtotal * 0.1;
+        total = subtotal - off;
+
+        c(".subtotal span:last-child").innerHTML = `RS ${subtotal.toFixed(2)}`;
+        c(".desconto span:last-child").innerHTML = `RS ${off.toFixed(2)}`;
+        c(".total span:last-child").innerHTML = `RS ${total.toFixed(2)}`;
 
     } else {
 
