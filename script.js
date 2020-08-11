@@ -187,7 +187,62 @@ c(".pizzaInfo-addButton").addEventListener("click", () => {
     });
 
     }
-
+    updateCart();
     closeModal();
 
 });
+
+//atualizando o carrinho após adicionar e fechar o modal
+
+function updateCart() {
+
+    // se o item existir, ele vai mostrar o painel do carrinho
+
+    if(cart.length > 0) {
+
+        c("aside").classList.add("show");
+        c(".cart").innerHTML = "";
+        // for para procurar em cada item array do carrinho 
+
+        for( let i in cart) {
+
+            // selectedPizza recebe pelo find todas as propriedades da pizza onde
+            // o id da busca for igual ao id do item selecionado e  do carrinho da interação 
+
+            let selectedPizza = pizzas.find(item => item.id === cart[i].id);
+
+            let cartItem = c(".models .cart-item").cloneNode(true);
+
+            let pizzaSizeName;
+
+            switch(cart[i].size) {
+
+                case 0: 
+                    pizzaSizeName = "P";
+                    break;
+
+                case 1: 
+                    pizzaSizeName = "M";
+                    break;
+
+                case 2:
+                    pizzaSizeName = "G";
+                    break;
+            }
+
+            let pizzaName = `${selectedPizza.name} (${pizzaSizeName})`;
+
+            cartItem.querySelector("img").src = selectedPizza.img;
+            cartItem.querySelector(".cart--item-name").innerHTML = pizzaName;
+            cartItem.querySelector(".cart--item-qt").innerHTML = cart[i].qt;
+
+            c(".cart").append(cartItem);
+        }
+
+    } else {
+
+        c("aside").classList.remove("show");
+
+    }
+
+}
